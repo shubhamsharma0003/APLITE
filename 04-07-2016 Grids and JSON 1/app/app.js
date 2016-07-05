@@ -7,4 +7,10 @@ app.controller('mainController', function($scope) {
 		$scope.repeat.push(i);
 	}
 	
+	$scope.content = [
+		{"heading" : "Heading 1"}, 
+		{"heading" : "Heading 2"},
+		{"heading" : "Heading 3"}
+	];
+
 });

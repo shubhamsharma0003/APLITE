@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<title></title>
+	<title>Grids and JSON 1</title>
+	<meta charset="utf-8">
 
 	<!-- RESET CSS -->
 	<link rel="stylesheet" href="content/css/reset.css">
@@ -16,12 +17,12 @@
 <body ng-app="app">
 	
 	<div class="grids" ng-controller="mainController">
-		<div class="grid" ng-repeat="i in repeat">
+		<div class="grid" ng-repeat="i in content">
 			<div class="image">
 				<img src="content/images/image.jpg" alt="logo">
 			</div>
 			<div class="contentText">
-				<h3>Coffee Social</h3>
+				<h3>{{i.heading}}</h3>
 				<p>Event Details: Come hang out with us! You never can tell what will happen. You might just have a cup of ...</p>
 				<p class="venue">Huntsville, Alabama</p>
 			</div>
@@ -29,13 +30,20 @@
 				<hr/>
 			</div>
 		</div>
+		
+		<!-- For testing AJAX request and response -->
+		<!-- <input type="button" onclick="func()" value="Click!">
+		<div class="content"></div> -->
+		<!-- For testing AJAX request and response -->
 
 	</div>
 
+	<!-- jQuery -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
 
 	<!-- ANGULAR JS -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular.js"></script>
-
+	
 	<!-- APP JS -->
 	<script src="app/app.js"></script>
 	

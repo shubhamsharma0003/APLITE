@@ -5,7 +5,8 @@ html, body, .grids {
 
 .grid {
 	/* border: 1px solid black; */
-	width: 60%;
+	width: 70%;
+	min-width: 842px;
 	height: 30%;
 	margin: auto;
 	margin-bottom: 1%;	
@@ -25,7 +26,11 @@ html, body, .grids {
 	margin-right: 5%;
 	margin-left: 4%;
 	width: 60%;
+	min-width: 60%;
+	max-width: 70%;
 	height: 50%;
+	min-height: 50%;
+	max-height: 60%;
 	line-height: 1.5em;
 }
 
