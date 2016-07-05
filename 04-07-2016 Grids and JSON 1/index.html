@@ -10,6 +10,19 @@
 	<!-- MAIN CSS -->
 	<link rel="stylesheet" href="content/css/main.css">
 
+	<!-- BOOTSTRAP -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+	<!-- BOOTSTRAP -->
+
 	<!-- NG-GRID CSS -->
 	<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ng-grid/2.0.11/ng-grid.css"> -->
 </head>
@@ -17,18 +30,23 @@
 <body ng-app="app">
 	
 	<div class="grids" ng-controller="mainController">
-		<div class="grid" ng-repeat="i in content">
-			<div class="image">
-				<img src="content/images/image.jpg" alt="logo">
+		<div class="container-fluid grid" ng-repeat="i in content">
+			<div class="row">
+				<div class="col-sm-3 image">
+					<img src="content/images/image.jpg" alt="logo">
+				</div>
+
+				<div class="col-sm-9 contentText">
+					<h3>{{i.heading}}</h3>
+					<p>Event Details: Come hang out with us! You never can tell what will happen. You might just have a cup of ...</p>
+					<p class="venue">Huntsville, Alabama</p>
+				</div>
+
+				<div class="col-sm-12 hr">
+					<hr/>
+				</div>
 			</div>
-			<div class="contentText">
-				<h3>{{i.heading}}</h3>
-				<p>Event Details: Come hang out with us! You never can tell what will happen. You might just have a cup of ...</p>
-				<p class="venue">Huntsville, Alabama</p>
-			</div>
-			<div class="hr">
-				<hr/>
-			</div>
+			
 		</div>
 		
 		<!-- For testing AJAX request and response -->
