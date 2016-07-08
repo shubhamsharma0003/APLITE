@@ -19,7 +19,51 @@
 
 </head>
 
-<body>
+<body ng-app="app">
+
+	<div class="mainPage">
+		
+		<!-- FORM "div" STARTS HERE -->
+		<h2>Registration form</h2>
+		<div class="formDiv" >
+			<form action="" role="form" ng-controller="formController">
+				<div class="form-group">
+					<label for="Name">Name*: </label>
+					<input type="text" class="form-control" required>
+				</div>
+				<div class="form-group">
+					<label for="email">E-mail*: </label>
+					<input type="email" class="form-control" required>
+				</div>
+				<div class="form-group">
+					<label for="Password">Password*: </label>
+					<input type="password" class="form-control" required>
+				</div>
+				<div class="form-group">
+					<label for="Gender">Gender*</label>
+					<div class="radio-inline">
+						<label for="Male"><input name="Gender" id="Male" type="radio" checked>M</label>
+					</div>
+					<div class="radio-inline">
+						<label for="Female"><input name="Gender" id="Female" type="radio">F</label>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="Age">Age*: </label>
+					<select class="form-control" id="Age">
+						<option ng-repeat="age in ages" value="age">{{age}}</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="Address">Address*: </label>
+					<textarea id="Address" cols="30" class="form-control" required></textarea>
+				</div>
+
+				<button type="submit" class="btn btn-default">Submit</button>
+			</form>
+		</div>
+
+	</div>
 
 
 	<!-- ******************** JAVASCRIPT FILES ******************** -->
