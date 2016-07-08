@@ -6,4 +6,12 @@ app.controller('formController', function($scope){
 		$scope.ages.push(a);
 	}
 
+	// USER OBJECT
+	$scope.user = {
+		name: "",
+		email: "",
+		password: "",
+		address: ""
+	};
+	
 });

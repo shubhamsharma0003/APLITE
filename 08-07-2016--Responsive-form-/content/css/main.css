@@ -1,0 +1,18 @@
+html, body, .mainpage, .formdiv, .form {
+	width: 100%;
+	height: 100%;
+}
+
+textarea {
+	resize: none;
+}
+
+.formHeading {
+	text-align: center;
+	font-weight: bold;
+}
+
+.mainPage {
+	padding: 4%;
+}
+
