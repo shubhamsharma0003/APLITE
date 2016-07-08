@@ -10,9 +10,12 @@ textarea {
 .formHeading {
 	text-align: center;
 	font-weight: bold;
+	cursor: default;
 }
 
 .mainPage {
 	padding: 4%;
+	background: #111;
+	color: #FFF;
 }
 
