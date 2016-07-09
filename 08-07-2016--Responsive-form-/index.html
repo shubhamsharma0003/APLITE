@@ -19,7 +19,7 @@
 
 </head>
 
-<body ng-app="app">
+<body ng-app="app" ng-cloak>
 
 	<div class="mainPage">
 		
@@ -61,7 +61,11 @@
 				<div class="form-group">
 					<label for="Password" class="control-label col-sm-1">Password*: </label>
 					<div class="col-sm-9">
-						<input type="password" class="form-control" placeholder="Enter your password" ng-model="user.password" ng-minlength="8" ng-maxlength="16" required>
+						<input name="password" type="password" class="form-control" placeholder="Enter your password" ng-model="user.password" ng-minlength="8" ng-maxlength="16" required>
+					</div>
+					<div class="col-sm-2">
+						<span class="alert alert-danger" ng-show="!(form.password.$error.required) && (form.password.$invalid)">Length: 8 - 16 !</span>
+						<span class="alert alert-danger" ng-show="form.password.$error.required && !(form.password.$pristine)">Enter your password !</span>
 					</div>
 				</div> <!-- PASSWORD FIELD ENDS -->
 
