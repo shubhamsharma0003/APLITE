@@ -11,7 +11,12 @@ app.controller('formController', function($scope){
 		name: "",
 		email: "",
 		password: "",
-		address: ""
-	};
+		address: "",
+		clickFunction: function(x) {
+			alert("Button clicked with a value: " + x);
+		}
+	}; // USER OBJECT
+
+
 	
 });
