@@ -2,6 +2,7 @@ function ClearForm(){
     document.form.reset();
 }
 
-// $(".reset").click = function () {
-// 	$("#subscribe")
-// };
+$(".reset").click (function () {
+	alert("in");
+	$("#subscribe").removeAttr("checked");
+});
