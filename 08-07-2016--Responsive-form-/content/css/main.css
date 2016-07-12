@@ -19,7 +19,27 @@ textarea {
 	color: #FFF;
 }
 
+/* 
+.form {
+	border: 3px solid blue;;
+	height: 50%;
+}
+ */
+
+/* .form-group {
+	border: 3px solid blue;;
+	height: 20%;
+}
+ */
+
+/* .col-sm-2 {
+	border: 3px solid blue;
+	display: inline-block;
+	height: 10%;
+}
 
 .alert {
-	height: 40%;
-}
+	display: inline-block;
+	border: 3px solid blue;
+	height: 100%;
+} */
