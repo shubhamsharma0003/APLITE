@@ -28,91 +28,117 @@
 
 </head>
 
-<body>
+<body onload="ClearForm()">
 
 	
 	<div class="mainPage">
 		<div class="formContainer" ng-controller="formController">
-			<form action="" class="form-horizontal container" role="form">
+		<div class="container-fluid">
+				<div class="col-sm-12">
+					<h2>Register here</h2> <br>
+				</div>
+		</div>
+			<form action="" name="form" class="form-horizontal container-fluid" role="form">
 
-				<div class="form-group row">
-					<div class="col-sm-4">
+				<div class="form-group">
+					<div class="col-sm-2">
 						<label for="Name" class="control-label">Name: </label>
 					</div>
-					<div class="col-sm-8">
-						<input type="text" class="form-control" id="Name" placeholder="Enter name here" required>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" id="Name" placeholder="Enter name here" ng-model="name" required>
 					</div>
 				</div> <!-- .form-group 1 Name -->
 
 				<div class="form-group">
-					<div class="col-sm-4">
+					<div class="col-sm-2">
 						<label for="DOB" class="control-label">Date of birth: </label>	
 					</div>
-					<div class="col-sm-8">
-					<md-content>
-						 <md-datepicker ng-model="myDate" md-placeholder="Enter date"></md-datepicker>
-					</md-content>
+					<div class="col-sm-3">
+						<md-content class="date">
+							 <md-datepicker ng-model="myDate" md-placeholder="Enter date" ng-model="DOB"></md-datepicker>
+						</md-content>
 					</div>
 				</div> <!-- .form-group 2 DOB -->
 
 				<div class="form-group">
-					<div class="col-sm-4">
+					<div class="col-sm-2">
 						<label for="contactNumber" class="control-label">Contact number: </label>
 					</div>
 
-					<div class="col-sm-8">
-						<input type="text" id="contactNumber" class="form-control" ng-pattern="/^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/" required>
+					<div class="col-sm-10">
+						<input type="text" id="contactNumber" class="form-control" ng-pattern="/^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/" ng-model="contactNumber" required>
 					</div>
 				</div> <!-- .form-group 3 ContactNumber -->
 
 				<div class="form-group">
-					<div class="col-sm-4">
+					<div class="col-sm-2">
 						<label for="email" class="control-label">E-mail: </label>
 					</div>
-					<div class="col-sm-8">
-						<input type="email" id="email" class="form-control" ng-pattern="/^[-a-z0-9~!$%^&*_=+}{\'?]+(\.[-a-z0-9~!$%^&*_=+}{\'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+)*\.(aero|arpa|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|pro|travel|mobi|[a-z][a-z])|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,5})?$/i" required>
+					<div class="col-sm-10">
+						<input type="email" id="email" class="form-control" ng-pattern="/^[-a-z0-9~!$%^&*_=+}{\'?]+(\.[-a-z0-9~!$%^&*_=+}{\'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+)*\.(aero|arpa|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|pro|travel|mobi|[a-z][a-z])|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,5})?$/i" ng-model="email" required>
 					</div>
 				</div> <!-- .form-group 4 Email -->
 
 				<div class="form-group">
-					<div class="col-sm-4">
+					<div class="col-sm-2">
 						<label for="password" class="control-label">Password: </label>
 					</div>
-					<div class="col-sm-8">
-						<input type="password" class="form-control" required>
+					<div class="col-sm-10">
+						<input type="password" id="password" class="form-control" ng-model="password" required>
 					</div>
 				</div> <!-- .form-group 5 Password -->
 					
 				<div class="form-group">
-					<div class="col-sm-4">
+					<div class="col-sm-2">
 						<label for="passwordConfirm" class="control-label">Confirm password: </label>
 					</div>
-					<div class="col-sm-8">
-						<input type="password" class="form-control" required>
+					<div class="col-sm-10">
+						<input type="password" id="passwordConfirm" class="form-control" ng-model="passwordConfirm" required>
 					</div>
 				</div> <!-- .form-group 6 Confirm password -->
 					
 				<div class="form-group">
-					<div class="col-sm-4">
+					<div class="col-sm-2">
 						<label for="subscribe">Subscribe: </label>
 					</div>
-					<div class="col-sm-8">
-						<input type="checkbox" data-toggle="toggle">
+					<div class="col-sm-10">
+						<input type="checkbox" id="subscribe" data-toggle="toggle" ng-model="subscribe">
 					</div>
 				</div> <!-- .form-group 7 Subscribe slider -->
 					
 				<div class="form-group">
-					<div class="col-sm-offset-4 col-sm-1">
-						<button type="submit" class="btn btn-info">Submit</button>
+					<div class="col-sm-offset-2 col-sm-1">
+						<button type="submit" class="btn btn-info" data-toggle="modal" data-target="#validationPopup">Submit</button>
 					</div>
-					<div class="col-sm-7">
+					<div class="col-sm-9">
 						<button type="reset" class="btn btn-danger">Reset</button>
 					</div>
 				</div> <!-- .form-group 8 Submit button -->
 
 
+				
+
 
 			</form>
+
+			<div id="validationPopup" class="modal fade" role="dialog">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+				       		<h4 class="modal-title">Modal Header</h4>
+						</div>
+						<div class="modal-body">
+							 <p>Some text in the modal.</p>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
 		</div> <!-- .formContainer -->
 	</div> <!-- .mainPage -->
 
