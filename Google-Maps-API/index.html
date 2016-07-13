@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Place Autocomplete</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+
+	<link rel="stylesheet" href="content/css/main.css">
+
+  </head>
+  <body>
+    <input id="pac-input" class="controls" type="text" placeholder="Enter a location">
+    
+    <div id="type-selector" class="controls">
+      <input type="radio" name="type" id="changetype-all" checked="checked">
+      <label for="changetype-all">All</label>
+
+      <input type="radio" name="type" id="changetype-establishment">
+      <label for="changetype-establishment">Establishments</label>
+
+      <input type="radio" name="type" id="changetype-address">
+      <label for="changetype-address">Addresses</label>
+
+      <input type="radio" name="type" id="changetype-geocode">
+      <label for="changetype-geocode">Geocodes</label>
+    </div>
+
+    <div id="map"></div>
+
+	<script src="content/js/script.js"></script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJScHsEjYvtWMm2_qNCjY-Y1YTjjTYptU&libraries=places&callback=initMap"
+        async defer></script>
+  </body>
+</html>

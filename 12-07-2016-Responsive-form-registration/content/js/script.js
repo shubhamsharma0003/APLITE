@@ -3,6 +3,6 @@ function ClearForm(){
 }
 
 $(".reset").click (function () {
-	alert("in");
-	$("#subscribe").removeAttr("checked");
+	// alert("in");
+	$("toggle").addClass("btn-default").removeClass("btn-primary");
 });
