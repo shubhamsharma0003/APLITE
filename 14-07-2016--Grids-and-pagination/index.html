@@ -20,33 +20,41 @@
 
 </head>
 
-<body ng-app="paginationApp" ng-controller="mainController">
+<body ng-app="paginationApp" >
 
-	<div class="table">
-		<div class="container-fluid">
-			<div class="table table-bordered">
-				<thead>
-					<tr>
-						<th>Firstname</th>
-						<th>Lastname</th>
-						<th>Mobile number</th>
-						<th>Email</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr></tr>
-				</tbody>
+	<div class="mainPage" ng-controller="mainController">
+		
+		<div class="table">
+			<div class="container-fluid">
+				<div class="table table-bordered">
+					<thead>
+						<tr>
+							<th>Firstname</th>
+							<th>Lastname</th>
+							<th>Mobile number</th>
+							<th>Email</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr></tr>
+					</tbody>
+				</div>
 			</div>
 		</div>
-	</div>
 
-	{{users}}
+			
 
-	<div class="paginationDiv">
-		<ul class="pagination">
-			<li ng-repeat="grid in gridList">{{grid}}</li>
-		</ul>
-	</div>
+			<!-- {{users}} -->
+
+			<div class="paginationDiv">
+				<ul class="pagination">
+					<li ng-repeat="grid in gridList"><!-- {{grid}} --></li>
+				</ul>
+			</div>
+
+	</div>		<!-- END .mainPage -->
+
+	
 	
 
 

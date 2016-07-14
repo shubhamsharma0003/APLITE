@@ -1,5 +1,5 @@
 var paginationApp = angular.module("paginationApp", [])
-					.controller('mainController', [function($scope, $http){
+					.controller('mainController', function($scope, $http){
 						$scope.gridsPerPage = 2;
 
 
@@ -23,11 +23,11 @@ var paginationApp = angular.module("paginationApp", [])
 // +++++++++++++++++++++++++++++++++ CODE FOR GETTING XML DATA +++++++++++++++++++++++++++++++++++
 
 	$http.get("usersData.json")
-	.then (function (response)) {
+	.then (function (response) {
 		$scope.data = response.data;
 		$scope.users = response.data.users;
-	}
+	});
 
 // +++++++++++++++++++++++++++++++++ CODE FOR GETTING XML DATA +++++++++++++++++++++++++++++++++++
 
-					}]);	// END MAIN CONTROLLER
+					});	// END MAIN CONTROLLER
