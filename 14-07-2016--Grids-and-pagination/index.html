@@ -26,7 +26,7 @@
 		
 		<div class="table">
 			<div class="container-fluid">
-				<div class="table table-bordered">
+				<table class="table table-bordered">
 					<thead>
 						<tr>
 							<th>Firstname</th>
@@ -36,15 +36,15 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr></tr>
+						<tr ng-repeat="user in users">{{user}}</tr>
 					</tbody>
-				</div>
+				</table>
 			</div>
 		</div>
 
-			
+			<!-- {{users[0].Firstname}} -->
 
-			<!-- {{users}} -->
+			{{users}}
 
 			<div class="paginationDiv">
 				<ul class="pagination">
