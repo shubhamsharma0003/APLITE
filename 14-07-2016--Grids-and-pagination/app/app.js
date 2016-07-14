@@ -37,19 +37,17 @@ var paginationApp = angular.module("paginationApp", [])
 	$scope.emails = [];
 
 	for(var j = 0; j < 100; ++j) {
-		$scope.firstNames.push("$scope.users[j].Firstname");
-		$scope.lastNames.push("$scope.users[j].Lastname");
-		$scope.numbers.push("$scope.users[j].Mobile");
-		$scope.emails.push("$scope.users[j].Email");
+		$scope.firstNames.push($scope.users[j].Firstname);
+		$scope.lastNames.push($scope.users[j].Lastname);
+		$scope.numbers.push($scope.users[j].Mobile);
+		$scope.emails.push($scope.users[j].Email);
 	}
-
-	$scope.q = $scope.users[0].Firstname;
 
 
 // ++++++++++++++++++++++++++++++++ GETTING JSON DATA IN ARRAY ++++++++++++++++++++++++++++++++++++
 
 		// alert($scope.users);
-	});
+	});		// Http request over
 
 // +++++++++++++++++++++++++++++++++ CODE FOR GETTING XML DATA +++++++++++++++++++++++++++++++++++
 
