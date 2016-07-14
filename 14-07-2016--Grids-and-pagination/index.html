@@ -45,8 +45,12 @@
 							<td>{{user.Email}}</td>
 						</tr> -->
 
-						<tr ng-repeat="name in firstNames track by $index">
-							<td>{{name}}</td>
+						<tr ng-repeat="fname in firstNames">
+							<td>{{ids[$index]}}</td>
+							<td>{{fname}}</td>
+							<td>{{lastNames[$index]}}</td>
+							<td>{{numbers[$index]}}</td>
+							<td>{{emails[$index]}}</td>
 						</tr>
 						
 

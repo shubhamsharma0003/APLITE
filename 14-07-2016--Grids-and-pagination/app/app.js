@@ -2,6 +2,7 @@ var paginationApp = angular.module("paginationApp", [])
 					.controller('mainController', function($scope, $http, $log){
 
 
+						$scope.ids = [];
 						$scope.firstNames = [];
 						$scope.lastNames = [];
 						$scope.numbers = [];
@@ -34,15 +35,21 @@ var getData = function () {
 		$scope.data = response.data;
 		$scope.users = response.data.users;
 
+		$scope.ids = [];
 		$scope.firstNames = [];
 		$scope.lastNames = [];
 		$scope.numbers = [];
 		$scope.emails = [];
+
+		// $scope.newData = [$scope.firstNames, $scope.lastNames, $scope.numbers, $scope.emails];
+
+		// console.log($scope.newData);
 // ++++++++++++++++++++++++++++++++ GETTING JSON DATA IN ARRAY ++++++++++++++++++++++++++++++++++++
 
 	
 
 	for(var j = 0; j < $scope.rowsPerPage; ++j) {
+		$scope.ids.push($scope.users[j].ID);
 		$scope.firstNames.push($scope.users[j].Firstname);
 		$scope.lastNames.push($scope.users[j].Lastname);
 		$scope.numbers.push($scope.users[j].Mobile);
