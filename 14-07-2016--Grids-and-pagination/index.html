@@ -54,11 +54,7 @@
 						</tr>
 						
 
-						<select name="results" id="results" ng-model="rowsPerPage">
-							<option class="optionValue" value="2" selected="selected">2</option>
-							<option class="optionValue" value="5">5</option>
-							<option class="optionValue" value="10">10</option>
-						</select>
+						
 
 						
 						<!-- {{firstNames}} -->
@@ -67,6 +63,33 @@
 
 					</tbody>
 				</table>
+			</div>
+
+		</div>
+
+
+		<div class="selectDiv">
+			<label for="results">Results per page: </label>
+			<select name="results" id="results" ng-model="rowsPerPage">
+				<option class="optionValue" value="2" selected="selected">2</option>
+				<option class="optionValue" value="5">5</option>
+				<option class="optionValue" value="10">10</option>
+			</select>
+		</div>
+
+
+
+		<div class="paginationDiv">
+			<div class="container">
+				<h2>Pagination</h2>
+				<p>The .pagination class provides pagination links:</p>
+				<ul class="pagination">
+				    <li><a href="#">1</a></li>
+				    <li><a href="#">2</a></li>
+				    <li><a href="#">3</a></li>
+				    <li><a href="#">4</a></li>
+				    <li><a href="#">5</a></li>
+				</ul>
 			</div>
 		</div>
 
