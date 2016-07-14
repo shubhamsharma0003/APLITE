@@ -3,7 +3,7 @@ var paginationApp = angular.module("paginationApp", [])
 						$scope.gridsPerPage = 4;
 
 
-// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// +++++++++++++++++++++++++++++++++ CODE FOR GRIDS +++++++++++++++++++++++++++++++++++
 
 						$scope.repeat = [];
 							var timesToRepeat = 3;
@@ -12,11 +12,11 @@ var paginationApp = angular.module("paginationApp", [])
 							}
 							
 							$scope.content = [
-								{"heading" : "Heading 1"}, 
+								{"heading" : "Heading 1"},
 								{"heading" : "Heading 2"},
 								{"heading" : "Heading 3"}
 							];
 
-// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++ CODE FOR GRIDS ++++++++++++++++++++++++++++++++++++
 
 					}]);
