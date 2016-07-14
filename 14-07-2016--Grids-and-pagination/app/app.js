@@ -1,7 +1,14 @@
 var paginationApp = angular.module("paginationApp", [])
 					.controller('mainController', function($scope, $http, $log){
-						$scope.gridsPerPage = 2;
 
+
+						$scope.firstNames = [];
+						$scope.lastNames = [];
+						$scope.numbers = [];
+						$scope.emails = [];
+
+
+						$scope.rowsPerPage = 2;
 
 // +++++++++++++++++++++++++++++++++ CODE FOR GRIDS +++++++++++++++++++++++++++++++++++
 
@@ -19,30 +26,28 @@ var paginationApp = angular.module("paginationApp", [])
 
 // ++++++++++++++++++++++++++++++++ CODE FOR GRIDS ++++++++++++++++++++++++++++++++++++
 
-
-
-// +++++++++++++++++++++++++++++++++ CODE FOR GETTING XML DATA +++++++++++++++++++++++++++++++++++
+var getData = function () {
+	// +++++++++++++++++++++++++++++++++ CODE FOR GETTING XML DATA +++++++++++++++++++++++++++++++++++
 
 	$http.get("usersData.json")
 	.then (function (response) {
 		$scope.data = response.data;
 		$scope.users = response.data.users;
 
-
+		$scope.firstNames = [];
+		$scope.lastNames = [];
+		$scope.numbers = [];
+		$scope.emails = [];
 // ++++++++++++++++++++++++++++++++ GETTING JSON DATA IN ARRAY ++++++++++++++++++++++++++++++++++++
 
-	$scope.firstNames = [];
-	$scope.lastNames = [];
-	$scope.numbers = [];
-	$scope.emails = [];
+	
 
-	for(var j = 0; j < 100; ++j) {
+	for(var j = 0; j < $scope.rowsPerPage; ++j) {
 		$scope.firstNames.push($scope.users[j].Firstname);
 		$scope.lastNames.push($scope.users[j].Lastname);
 		$scope.numbers.push($scope.users[j].Mobile);
 		$scope.emails.push($scope.users[j].Email);
 	}
-
 
 // ++++++++++++++++++++++++++++++++ GETTING JSON DATA IN ARRAY ++++++++++++++++++++++++++++++++++++
 
@@ -50,10 +55,16 @@ var paginationApp = angular.module("paginationApp", [])
 	});		// Http request over
 
 // +++++++++++++++++++++++++++++++++ CODE FOR GETTING XML DATA +++++++++++++++++++++++++++++++++++
+};
 
+getData();
 
+function func() {
+	getData();
+}
 
-
+$("#results").mouseleave(func);
+		
 
 
 					});	// END MAIN CONTROLLER
