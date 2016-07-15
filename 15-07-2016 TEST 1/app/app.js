@@ -2,17 +2,25 @@ var app = angular.module("app", [])
 				.controller('mainController', ['$scope', function($scope){
 
 					$scope.titles = [];
-					// var titles = [];
-					var descriptions = [];
+					$scope.descriptions = [];
 					
 					$(".saveButton").click( function () {
-						alert("clicked");
+						// alert("clicked");
+
+
+
 						$scope.titles.push($scope.plusTitle);
-						descriptions.push($scope.plusDescription);
+						$scope.descriptions.push($scope.plusDescription);
 						
+
 
 						localStorage["myTitles"] = JSON.stringify($scope.titles);
 						$scope.titles = JSON.parse(localStorage["myTitles"]);
+
+
+						localStorage["myDescriptions"] = JSON.stringify($scope.descriptions);
+						$scope.descriptions = JSON.parse(localStorage["myDescriptions"]);
+
 
 						console.log("Titles = " + $scope.titles);
 
@@ -21,6 +29,11 @@ var app = angular.module("app", [])
 					});
 
 
-
+					(function() {
+						$scope.titles = JSON.parse(localStorage["myTitles"]);
+						$scope.descriptions = JSON.parse(localStorage["myTitles"]);
+					})();
 
 				}]);
+
+

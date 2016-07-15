@@ -110,10 +110,10 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td>1</td>
-						<td>2</td>
-						<td>3</td>
+					<tr ng-repeat="title in titles">
+						<td>{{title}}</td>
+						<td>{{descriptions[$index]}}</td>
+						<td></td>
 					</tr>
 				</tbody>
 			</table>
