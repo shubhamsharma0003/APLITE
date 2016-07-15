@@ -45,7 +45,7 @@
 							<td>{{user.Email}}</td>
 						</tr> -->
 
-						<tr ng-repeat="fname in firstNames">
+						<tr ng-repeat="fname in firstNames track by $index">
 							<td>{{ids[$index]}}</td>
 							<td>{{fname}}</td>
 							<td>{{lastNames[$index]}}</td>
@@ -82,8 +82,6 @@
 
 		<div class="paginationDiv">
 			<div class="container">
-				<h2>Pagination</h2>
-				<p>The .pagination class provides pagination links:</p>
 				<ul class="pagination">
 				    <li><a href="#">1</a></li>
 				    <li><a href="#">2</a></li>
@@ -108,6 +106,17 @@
 				</ul>
 			</div>
 
+
+
+			
+			<!-- UPLOADING A FILE -->
+			<input type='file' onchange="readURL(this);" />
+    		<img id="blah" src="#" alt="your image" />
+
+
+
+
+
 	</div>		<!-- END .mainPage -->
 
 	
@@ -128,6 +137,9 @@
 
 	<!-- APP JS -->
 	<script type="text/javascript" src="app/app.js"></script>
+
+	<!-- MY LOGIC IN APP JS -->
+	<!-- <script src="app/myLogic.js"></script> -->
 
 	<!-- INTERNAL JS -->
 	<script type="text/javascript" src="content/js/script.js"></script>
