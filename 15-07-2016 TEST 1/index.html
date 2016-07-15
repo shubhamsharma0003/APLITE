@@ -53,13 +53,15 @@
 			        </div>
 
 			        <div class="modal-body">
-			          <label for="addTitle">Title: </label>
-			          <input type="text" id="addTitle" ng-model="plusTitle">
-			
-			          <label for="addDescription">Desciption: </label>
-			          <input type="text" id="addDescription" ng-model="plusDescription">
-
-			          <button class="saveButton btn btn-info" id="saveButton">Save</button>
+			          <form action="" name="form">
+			          	<label for="addTitle">Title: </label>
+			          	<input type="text" id="addTitle" ng-model="plusTitle" name="plusTitle" required>
+			          				
+			          	<label for="addDescription">Desciption: </label>
+			          	<input type="text" id="addDescription" ng-model="plusDescription" name="plusDescription" required>
+			          	
+			          	<button class="saveButton btn btn-info" id="saveButton" ng-disabled="form.plusTitle.$error.required || form.plusDescription.$error.required">Save</button>
+			          </form>
 			        </div>
 
 			        <div class="modal-footer">
