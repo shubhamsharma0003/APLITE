@@ -1,12 +1,15 @@
 // MAIN MODULE OF THE APP
 var app = angular.module("app", [])
-				.controller('mainController', ['$scope', function($scope){
+				.controller('mainController', ['$scope', function($scope){		// MAIN CONTROLLER
 
 					$scope.titles = [];
 					$scope.descriptions = [];
-
 					$scope.times = [];
+
+					$scope.lastTime;
 					
+					$scope.total = 0;
+
 					
 
 					// FUNCTION EXECUTES ON CLICK OF THE SAVE BUTTON
@@ -24,6 +27,7 @@ var app = angular.module("app", [])
 						var fullTime = date + " " + hour + ":" + minute + ":" + second;
 						// alert("fulltime: " + fullTime);
 						// END OF CALCULATING CURRENT TIME AND APPENDING TO FULLTIME VARIABLE
+						$scope.lastTime = fullTime;
 
 
 						// PUSHING MODAL VALUES INTO ARRAYS
@@ -87,6 +91,6 @@ var app = angular.module("app", [])
 				
 
 
-				}]);
+				}]);		// END OF MAIN CONTROLLER
 
 
