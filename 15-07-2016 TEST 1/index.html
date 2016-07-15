@@ -37,7 +37,7 @@
 		</div>
 
 
-		Titles: {{titles}}
+
 
 
 		<!-- FIRST POPUP (PLUS BUTTON) -->
@@ -110,10 +110,11 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr ng-repeat="title in titles">
+					<tr ng-repeat="title in titles track by $index">
 						<td>{{title}}</td>
 						<td>{{descriptions[$index]}}</td>
-						<td></td>
+						<td>{{times[$index]}}</td>
+						<!-- <td>{{times[$index]}}</td> -->
 					</tr>
 				</tbody>
 			</table>
