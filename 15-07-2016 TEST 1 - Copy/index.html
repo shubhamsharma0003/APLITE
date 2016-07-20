@@ -72,6 +72,7 @@
 			    </div>
 			</div>		
 		</div>
+		<!-- FIRST POPUP (PLUS BUTTON) -->
 
 
 
@@ -97,7 +98,39 @@
 			    </div>
 			</div>		
 		</div>
+		<!-- END SECOND POPUP (SUMMARY BUTTON) -->
 
+
+		<!-- EDIT POPUP -->
+		<div class="container">
+			<div class="modal fade" id="edit" role="dialog">
+			    <div class="modal-dialog">
+			    
+			      <!-- Modal content-->
+			        <div class="modal-content">
+				        <div class="modal-header">
+				          <button type="button" class="close" data-dismiss="modal">&times;</button>
+				          <h4 class="modal-title">Edit field</h4>
+				        </div>
+				        <div class="modal-body">
+							<form action="" name="editForm">
+					          	<label for="editTitle">Title: </label>
+					          	<input type="text" id="editTitle" ng-model="" name="editTitle" required>
+					          				
+					          	<label for="editDescription">Desciption: </label>
+					          	<input type="text" id="editDescription" ng-model="" name="editDescription" required>
+					          	
+					          	<button type="button" class="editSaveButton btn btn-info" id="editSaveButton" ng-disabled="editForm.editTitle.$error.required || editForm.editDescription.$error.required" ng-click="">Save</button>
+			          		</form>
+				        </div>
+				        <div class="modal-footer">
+				          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				        </div>
+			        </div>
+			    </div>
+			</div>
+		</div>
+		<!-- END EDIT POPUP -->
 		
 		<br><br><br><br><br>
 
@@ -119,7 +152,7 @@
 						<td>{{listItem.title}}</td>
 						<td>{{listItem.description}}</td>
 						<td>{{listItem.time | date:'MMM d, y h:mm:ss a'}}</td>
-						<td><strong><a class="edit">Edit</a></strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" class="remove" ng-click="close(listItem.id); setSerial()">&times;</button></td>
+						<td><strong><a class="edit" data-toggle="modal" data-target="#edit">Edit</a></strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" class="remove" ng-click="close(listItem.id); setSerial()">&times;</button></td>
 					</tr>
 				</tbody>
 			</table>
