@@ -13,8 +13,12 @@ var app = angular.module("app", [])
 						time: ""
 					};
 					$scope.total = 0;
-// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
+					$scope.editId = "";
+
+
+
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 					// FUNCTION EXECUTES ON CLICK OF THE SAVE BUTTON
 					$scope.saveFunction = function() {
 						// alert("clicked");
@@ -62,9 +66,47 @@ var app = angular.module("app", [])
 						
 					};
 					// END OF FUNCTION EXECUTES ON CLICK OF THE SAVE BUTTON
+// ---------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
 
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+					// SETS ID ON BASIS OF SELECTED EDIT ELEMENT
+					$scope.setId = function(editId) {
+						// alert("Edit called");
+						$scope.editId = editId;
+						// console.log("editId: " + $scope.editId);
+					};
+					// END OF SETS ID ON BASIS OF SELECTED EDIT ELEMENT
+// ---------------------------------------------------------------------------------------------------------------
 
+
+
+
+
+
+
+
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+					// EDIT DATA FUNCTION
+					$scope.editFunction = function(editId) {
+						// alert("Edit called");
+						$scope.lists[$scope.editId-1].title = $scope.list.title;
+						$scope.lists[$scope.editId-1].description = $scope.list.description;
+					};
+					// END OF EDIT DATA FUNCTION
+// ---------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 					// FUNCTION TO SET SERIAL NUMBER
 					$scope.setSerial = function() {
 						// alert("in");
@@ -75,9 +117,14 @@ var app = angular.module("app", [])
 					};
 					$scope.setSerial();
 					// END OF FUNCTION TO SET SERIAL NUMBER
+// ---------------------------------------------------------------------------------------------------------------
+
+
+
+
+
 
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
 					// FUNCTION EXECUTES ON CLICK OF CROSS BUTTON TO REMOVE FIELD
 					$scope.close = function(id) {
 						console.log(id);
@@ -90,9 +137,14 @@ var app = angular.module("app", [])
 						$scope.lists = JSON.parse(localStorage['localLists']);
 					};
 					// END OF FUNCTION EXECUTES ON CLICK OF CROSS BUTTON TO REMOVE FIELD
+// ---------------------------------------------------------------------------------------------------------------
+
+
+
+
+
 
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
 					// CHECK IF LOCAL STORAGE CONTAINS ANY DATA AND IF YES THEN LOAD THE DATA INTO "lists" ARRAY
 					if(localStorage.getItem("localLists") !== null) {
 						$scope.lists = JSON.parse(localStorage['localLists']);
@@ -101,8 +153,7 @@ var app = angular.module("app", [])
 						// alert("no data");
 					}
 					// END OF CHECK IF LOCAL STORAGE CONTAINS ANY DATA AND IF YES THEN LOAD THE DATA INTO "lists" ARRAY
-
-// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// ---------------------------------------------------------------------------------------------------------------
 
 				}]);		// END OF MAIN CONTROLLER
 

@@ -115,12 +115,12 @@
 				        <div class="modal-body">
 							<form action="" name="editForm">
 					          	<label for="editTitle">Title: </label>
-					          	<input type="text" id="editTitle" ng-model="" name="editTitle" required>
+					          	<input type="text" id="editTitle" ng-model="list.title" name="editTitle" required>
 					          				
 					          	<label for="editDescription">Desciption: </label>
-					          	<input type="text" id="editDescription" ng-model="" name="editDescription" required>
+					          	<input type="text" id="editDescription" ng-model="list.description" name="editDescription" required>
 					          	
-					          	<button type="button" class="editSaveButton btn btn-info" id="editSaveButton" ng-disabled="editForm.editTitle.$error.required || editForm.editDescription.$error.required" ng-click="">Save</button>
+					          	<button type="button" class="editSaveButton btn btn-info" id="editSaveButton" ng-disabled="editForm.editTitle.$error.required || editForm.editDescription.$error.required" ng-click="editFunction()">Save</button>
 			          		</form>
 				        </div>
 				        <div class="modal-footer">
@@ -143,7 +143,7 @@
 						<th><strong>Title</strong></th>
 						<th><strong>Description</strong></th>
 						<th><strong>Time</strong></th>
-						<th><strong>Edit / Remove</strong></th>
+						<th><strong>Edit | Remove</strong></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -152,7 +152,7 @@
 						<td>{{listItem.title}}</td>
 						<td>{{listItem.description}}</td>
 						<td>{{listItem.time | date:'MMM d, y h:mm:ss a'}}</td>
-						<td><strong><a class="edit" data-toggle="modal" data-target="#edit">Edit</a></strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" class="remove" ng-click="close(listItem.id); setSerial()"><a>Remove</a></button></td>
+						<td><strong><a class="edit" data-toggle="modal" data-target="#edit" ng-click="setId(listItem.id)">Edit</a></strong>&nbsp;&nbsp;&nbsp;<strong>|</strong>&nbsp;&nbsp;&nbsp;<button type="button" class="remove" ng-click="close(listItem.id); setSerial()"><a>Remove</a></button></td>
 					</tr>
 				</tbody>
 			</table>
