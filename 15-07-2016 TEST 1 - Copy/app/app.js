@@ -13,26 +13,13 @@ var app = angular.module("app", [])
 						time: ""
 					};
 
-
-
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 					// FUNCTION EXECUTES ON CLICK OF THE SAVE BUTTON
 					$scope.saveFunction = function() {
 						// alert("clicked");
 
 						$scope.list.time = new Date();
-
-
-						// SET SERIAL NUMBER
-						// $scope.setSerial = function() {
-						// 	var one = 1;
-						// 	for(tempList in lists) {
-						// 		tempList.id = one;
-						// 		one++;
-						// 	}
-						// };
-						// $scope.serSerial();
-
 
 						$scope.lists.push({
 							id: "",
@@ -41,7 +28,6 @@ var app = angular.module("app", [])
 							time: $scope.list.time
 						});
 						// console.log($scope.lists);
-
 
 						// SET SERIAL NUMBER
 						$scope.setSerial = function() {
@@ -52,17 +38,12 @@ var app = angular.module("app", [])
 							}
 						};
 						$scope.setSerial();
-						// SET SERIAL NUMBER
-
 
 
 						localStorage.setItem('localLists', JSON.stringify($scope.lists));
 						$scope.lists = JSON.parse(localStorage['localLists']);
 
 						$scope.total = $scope.lists.length;
-
-
-
 
 
 						// $scope.latestTime = function() {
@@ -81,19 +62,40 @@ var app = angular.module("app", [])
 					};
 					// END OF FUNCTION EXECUTES ON CLICK OF THE SAVE BUTTON
 
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+					// FUNCTION TO SET SERIAL NUMBER
+					$scope.setSerial = function() {
+						// alert("in");
+						for(var i = 0; i < $scope.lists.length; ++i) {
+							// alert("ïn");
+							$scope.lists[i].id = i+1;
+						}
+					};
+					$scope.setSerial();
+					// END OF FUNCTION TO SET SERIAL NUMBER
+
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+					// FUNCTION EXECUTES ON CLICK OF CROSS BUTTON TO REMOVE FIELD
 					$scope.close = function(id) {
 						console.log(id);
 						$scope.lists.splice(id-1, 1);
 					};
+					// END OF FUNCTION EXECUTES ON CLICK OF CROSS BUTTON TO REMOVE FIELD
 
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
+					// CHECK IF LOCAL STORAGE CONTAINS ANY DATA AND IF YES THEN LOAD THE DATA INTO "lists" ARRAY
 					if(localStorage.getItem("localLists") !== null) {
 						$scope.lists = JSON.parse(localStorage['localLists']);
 					} else {
-						$log.log("no data");
+						$scope.lists = [];
+						// alert("no data");
 					}
+					// END OF CHECK IF LOCAL STORAGE CONTAINS ANY DATA AND IF YES THEN LOAD THE DATA INTO "lists" ARRAY
 
-
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 				}]);		// END OF MAIN CONTROLLER
 
