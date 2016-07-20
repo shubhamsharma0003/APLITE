@@ -88,7 +88,7 @@
 			          <h4 class="modal-title">Summary</h4>
 			        </div>
 			        <div class="modal-body">
-			          <p>Total lists: <span ng-bind="total"></span> </p>
+			          <p>Total todos: <span ng-bind="total"></span> </p>
 			          <p>Last list addition time: <span ng-bind="lastTime"></span> </p>
 			        </div>
 			        <div class="modal-footer">
@@ -152,7 +152,7 @@
 						<td>{{listItem.title}}</td>
 						<td>{{listItem.description}}</td>
 						<td>{{listItem.time | date:'MMM d, y h:mm:ss a'}}</td>
-						<td><strong><a class="edit" data-toggle="modal" data-target="#edit">Edit</a></strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" class="remove" ng-click="close(listItem.id); setSerial()">&times;</button></td>
+						<td><strong><a class="edit" data-toggle="modal" data-target="#edit">Edit</a></strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" class="remove" ng-click="close(listItem.id); setSerial()"><a>Remove</a></button></td>
 					</tr>
 				</tbody>
 			</table>

@@ -11,7 +11,10 @@ a {
 .remove {
 	cursor: pointer;
 	border: none;
-	background: red;
-	color: #FFF;
-	border-radius: 50%;
+
+}
+
+.remove > a {
+	color: #444;
+	font-weight: bold;
 }

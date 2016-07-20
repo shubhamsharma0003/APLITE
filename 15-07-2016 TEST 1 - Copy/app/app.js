@@ -12,7 +12,7 @@ var app = angular.module("app", [])
 						description: "",
 						time: ""
 					};
-
+					$scope.total = 0;
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 					// FUNCTION EXECUTES ON CLICK OF THE SAVE BUTTON
@@ -43,6 +43,7 @@ var app = angular.module("app", [])
 						localStorage.setItem('localLists', JSON.stringify($scope.lists));
 						$scope.lists = JSON.parse(localStorage['localLists']);
 
+						// CALCULATE TOTAL LIST ITEMS	
 						$scope.total = $scope.lists.length;
 
 
@@ -82,6 +83,9 @@ var app = angular.module("app", [])
 						console.log(id);
 						$scope.lists.splice(id-1, 1);
 						$scope.setSerial();
+						// CALCULATE TOTAL LIST ITEMS	
+						$scope.total = $scope.lists.length;
+
 						localStorage.setItem('localLists', JSON.stringify($scope.lists));
 						$scope.lists = JSON.parse(localStorage['localLists']);
 					};
