@@ -2,94 +2,32 @@
 var app = angular.module("app", [])
 				.controller('mainController', ['$scope', function($scope){		// MAIN CONTROLLER
 
-					$scope.titles = [];
-					$scope.descriptions = [];
-					$scope.times = [];
+					// ARRAY FOR HOLDING ALL THE LISTS
+					var lists = [];
 
-					$scope.lastTime;
-					
-					$scope.total = 0;
+					// OBJECT FOR FIELDS WHICH WILL BE PUSHED TO "lists" OBJECT
+					$scope.list = {
+						id: lists.length + 1,
+						title: "",
+						description: "",
+						time: ""
+					};
 
-					
 
 					// FUNCTION EXECUTES ON CLICK OF THE SAVE BUTTON
-					$(".saveButton").click( function () {
+					$scope.saveFunction = function() {
 						// alert("clicked");
 
-
-
-						// CALCULATING CURRENT TIME AND APPENDING TO FULLTIME VARIABLE
-						var d = new Date();
-						var date = d.toDateString();
-						var hour = d.getHours();
-						var minute = d.getMinutes();
-						var second = d.getSeconds();
-						var fullTime = date + " " + hour + ":" + minute + ":" + second;
-						// alert("fulltime: " + fullTime);
-						// END OF CALCULATING CURRENT TIME AND APPENDING TO FULLTIME VARIABLE
-						$scope.lastTime = fullTime;
-
-
-						// PUSHING MODAL VALUES INTO ARRAYS
-						$scope.titles.push($scope.plusTitle);
-						$scope.descriptions.push($scope.plusDescription);
-						$scope.times.push(fullTime);
-						// END OF PUSHING MODAL VALUES INTO ARRAYS
-
-						
-						// Title						
-						localStorage["myTitles"] = JSON.stringify($scope.titles);
-						$scope.titles = JSON.parse(localStorage["myTitles"]);
-						// END OF Title
-
-						// Description
-						localStorage["myDescriptions"] = JSON.stringify($scope.descriptions);
-						$scope.descriptions = JSON.parse(localStorage["myDescriptions"]);
-						// END OF Description
-
-
-						// Time
-						localStorage["myTimes"] = JSON.stringify($scope.times);
-						$scope.times = JSON.parse(localStorage["myTimes"]);
-						// END OF Time
-
-						
-
-
-
-						console.log("Titles = " + $scope.titles);
-
-						// console.log(titles);
-						// console.log(descriptions);
-					});
+						$scope.list.time = new Date();
+						lists.push({
+							id: (lists.length + 1),
+							title: $scope.list.title,
+							description: $scope.list.description,
+							time: $scope.list.time
+						});
+						console.log(lists);
+					};
 					// END OF FUNCTION EXECUTES ON CLICK OF THE SAVE BUTTON
-
-
-					// (function() {
-					// 	$scope.titles = JSON.parse(localStorage["myTitles"]);
-					// 	$scope.descriptions = JSON.parse(localStorage["myTitles"]);
-					// })();
-
-
-
-					// THIS IS AN "IFFIE" TO LOAD DATA FROM LOCAL STORAGE ON PAGE LOAD BUT ONLY IF THE LOCAL STORAGE KEY IS CREATED
-					(function() {
-
-						if((localStorage.getItem("myTitles") !== null) && (localStorage.getItem("myDescriptions") !== null) && localStorage.getItem("myTimes") !== null ){
-						   // alert("yes");
-								$scope.titles = JSON.parse(localStorage["myTitles"]);
-								$scope.descriptions = JSON.parse(localStorage["myTitles"]);
-
-								// time
-								$scope.times = JSON.parse(localStorage["myTimes"]);
-								// time
-						}
-					})();
-
-
-					
-				
-
 
 				}]);		// END OF MAIN CONTROLLER
 
