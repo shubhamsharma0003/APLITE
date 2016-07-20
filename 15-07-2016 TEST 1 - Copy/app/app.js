@@ -1,13 +1,13 @@
 // MAIN MODULE OF THE APP
 var app = angular.module("app", [])
-				.controller('mainController', ['$scope', function($scope){		// MAIN CONTROLLER
+				.controller('mainController', ['$scope', '$log', function($scope, $log){		// MAIN CONTROLLER
 
 					// ARRAY FOR HOLDING ALL THE LISTS
-					var lists = [];
+					$scope.lists = [];
 
 					// OBJECT FOR FIELDS WHICH WILL BE PUSHED TO "lists" OBJECT
 					$scope.list = {
-						id: lists.length + 1,
+						id: $scope.lists.length + 1,
 						title: "",
 						description: "",
 						time: ""
@@ -19,15 +19,28 @@ var app = angular.module("app", [])
 						// alert("clicked");
 
 						$scope.list.time = new Date();
-						lists.push({
-							id: (lists.length + 1),
+						$scope.lists.push({
+							id: ($scope.lists.length + 1),
 							title: $scope.list.title,
 							description: $scope.list.description,
 							time: $scope.list.time
 						});
-						console.log(lists);
+						console.log($scope.lists);
+
+						localStorage.setItem('localLists', JSON.stringify($scope.lists));
+						$scope.lists = JSON.parse(localStorage['localLists']);
 					};
 					// END OF FUNCTION EXECUTES ON CLICK OF THE SAVE BUTTON
+
+
+
+					if(localStorage.getItem("localLists") !== null) {
+						$scope.lists = JSON.parse(localStorage['localLists']);
+					} else {
+						$log.log("no data");
+					}
+
+
 
 				}]);		// END OF MAIN CONTROLLER
 
