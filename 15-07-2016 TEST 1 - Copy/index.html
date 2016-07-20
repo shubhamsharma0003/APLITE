@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Responsive form</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- *********************** CSS FILES *********************** -->
+
+	<!-- RESET CSS -->
+	<link rel="stylesheet" href="content/css/reset.css">
+
+	<!-- BOOTSTRAP CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+	<!-- MAIN CSS -->
+	<link rel="stylesheet" href="content/css/main.css">
+
+	<!-- *********************** CSS FILES *********************** -->
+
+</head>
+
+<body ng-app="app" ng-controller="mainController">
+
+	<div class="mainPage">
+	
+		<div class="header">
+			<div class="subHeader cpntainer-fluid">
+				<div class="col-sm-9">
+					<h2>Note</h2>
+				</div>
+				<div class="col-sm-3">
+					<button type="button" class="btn btn-info glyphicon glyphicon-plus" data-toggle="modal" data-target="#plus"></button> <br><br>
+					<button type="button" class="btn btn-info" data-toggle="modal" data-target="#summary">Summary</button>
+				</div>
+			</div>
+		</div>
+
+
+
+
+
+		<!-- FIRST POPUP (PLUS BUTTON) -->
+		<div class="container">
+			<div class="modal fade" id="plus" role="dialog">
+			    <div class="modal-dialog">
+			    
+			      <!-- Modal content-->
+			      <div class="modal-content">
+			        <div class="modal-header">
+			          <button type="button" class="close" data-dismiss="modal">&times;</button>
+			          <h4 class="modal-title">Add new item</h4>
+			        </div>
+
+			        <div class="modal-body">
+			          <form action="" name="form">
+			          	<label for="addTitle">Title: </label>
+			          	<input type="text" id="addTitle" ng-model="plusTitle" name="plusTitle" required>
+			          				
+			          	<label for="addDescription">Desciption: </label>
+			          	<input type="text" id="addDescription" ng-model="plusDescription" name="plusDescription" required>
+			          	
+			          	<button class="saveButton btn btn-info" id="saveButton" ng-disabled="form.plusTitle.$error.required || form.plusDescription.$error.required">Save</button>
+			          </form>
+			        </div>
+
+			        <div class="modal-footer">
+			          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			        </div>
+			      </div>
+			      
+			    </div>
+			</div>		
+		</div>
+
+
+
+		<!-- SECOND POPUP (SUMMARY BUTTON) -->
+		<div class="container">
+			<div class="modal fade" id="summary" role="dialog">
+			    <div class="modal-dialog">
+			    
+			      <!-- Modal content-->
+			      <div class="modal-content">
+			        <div class="modal-header">
+			          <button type="button" class="close" data-dismiss="modal">&times;</button>
+			          <h4 class="modal-title">Summary</h4>
+			        </div>
+			        <div class="modal-body">
+			          <p>Total lists: <span ng-bind="totalLists"></span> </p>
+			          <p>Last list addition time: <span ng-bind="lastTime"></span> </p>
+			        </div>
+			        <div class="modal-footer">
+			          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			        </div>
+			      </div>
+			    </div>
+			</div>		
+		</div>
+
+		
+		<br><br><br><br><br>
+
+
+		<div class="table">
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+						<th>Title</th>
+						<th>Description</th>
+						<th>Time</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="title in titles track by $index">
+						<td>{{title}}</td>
+						<td>{{descriptions[$index]}}</td>
+						<td>{{times[$index]}}</td>
+						<!-- <td>{{times[$index]}}</td> -->
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+
+
+	<!-- ******************** JAVASCRIPT FILES ******************** -->
+
+	<!-- jQuery -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+	<!-- BOOTSTRAP JS -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+	<!-- ANGULAR JS -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular.js"></script>
+
+	<!-- APP JS -->
+	<script type="text/javascript" src="app/app.js"></script>
+
+	<!-- INTERNAL JS -->
+	<script type="text/javascript" src="content/js/script.js"></script>
+
+	<!-- ******************** JAVASCRIPT FILES ******************** -->
+
+</body>
+</html>
