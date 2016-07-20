@@ -12,9 +12,10 @@ var app = angular.module("app", [])
 						description: "",
 						time: ""
 					};
-					$scope.total = 0;
+					
 
 					$scope.editId = "";
+
 
 
 
@@ -148,6 +149,7 @@ var app = angular.module("app", [])
 					// CHECK IF LOCAL STORAGE CONTAINS ANY DATA AND IF YES THEN LOAD THE DATA INTO "lists" ARRAY
 					if(localStorage.getItem("localLists") !== null) {
 						$scope.lists = JSON.parse(localStorage['localLists']);
+						$scope.total = $scope.lists.length;
 					} else {
 						$scope.lists = [];
 						// alert("no data");

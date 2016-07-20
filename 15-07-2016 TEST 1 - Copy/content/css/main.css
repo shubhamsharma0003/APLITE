@@ -1,11 +1,35 @@
+html, body, .mainPage {
+	height: 100%;
+	width: 100%;
+}
+
 h2, tr, th, td {
 	cursor: default;
 	
 }
 
+h2 {
+	font-size: 3em;
+}
+
 a {
 	text-decoration: none !important;
 	cursor: pointer;
+}
+
+.header {
+	background: orange;
+	padding: 2%;
+	color: #FFF;
+}
+
+.table {
+	width: 95%;
+	margin: auto;
+}
+
+.plusAndSummary {
+	box-shadow: -1px -1px 3px black;
 }
 
 .remove {
