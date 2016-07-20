@@ -32,6 +32,10 @@ var app = angular.module("app", [])
 					};
 					// END OF FUNCTION EXECUTES ON CLICK OF THE SAVE BUTTON
 
+					$scope.close = function(id) {
+						console.log(id);
+						$scope.lists.splice(id-1, 1);
+					};
 
 
 					if(localStorage.getItem("localLists") !== null) {

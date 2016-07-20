@@ -106,7 +106,7 @@
 			<table class="table table-bordered">
 				<thead>
 					<tr>
-						<th><strong>ID</strong></th>
+						<th><strong>S. No.</strong></th>
 						<th><strong>Title</strong></th>
 						<th><strong>Description</strong></th>
 						<th><strong>Time</strong></th>
@@ -119,7 +119,7 @@
 						<td>{{listItem.title}}</td>
 						<td>{{listItem.description}}</td>
 						<td>{{listItem.time | date:'MMM d, y h:mm:ss a'}}</td>
-
+						<td><button type="button" class="close remove" data-dismiss="modal" ng-click="close(listItem.id)">&times;</button></td>
 					</tr>
 				</tbody>
 			</table>
