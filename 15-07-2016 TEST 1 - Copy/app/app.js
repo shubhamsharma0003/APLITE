@@ -81,6 +81,9 @@ var app = angular.module("app", [])
 					$scope.close = function(id) {
 						console.log(id);
 						$scope.lists.splice(id-1, 1);
+						$scope.setSerial();
+						localStorage.setItem('localLists', JSON.stringify($scope.lists));
+						$scope.lists = JSON.parse(localStorage['localLists']);
 					};
 					// END OF FUNCTION EXECUTES ON CLICK OF CROSS BUTTON TO REMOVE FIELD
 

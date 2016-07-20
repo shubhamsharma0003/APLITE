@@ -3,6 +3,11 @@ h2, tr, th, td {
 	
 }
 
+a {
+	text-decoration: none !important;
+	cursor: pointer;
+}
+
 .remove {
 	cursor: pointer;
 	border: none;
