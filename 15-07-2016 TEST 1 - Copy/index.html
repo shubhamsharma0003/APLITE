@@ -89,7 +89,7 @@
 			        </div>
 			        <div class="modal-body">
 			          <p>Total todos: <span ng-bind="total"></span> </p>
-			          <p>Last list addition time: <span ng-bind="lastTime"></span> </p>
+			          <p>Last updation time: <span>{{lastTime | date:'MMM d, y h:mm:ss a'}}</span> </p>
 			        </div>
 			        <div class="modal-footer">
 			          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

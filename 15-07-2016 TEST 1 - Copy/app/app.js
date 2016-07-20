@@ -51,18 +51,18 @@ var app = angular.module("app", [])
 						$scope.total = $scope.lists.length;
 
 
-						// $scope.latestTime = function() {
-						// 	var tempTime = 0;
-						// 	for (var i=0; i<$scope.lists.length; ++i) {
-						// 		if($scope.lists[i].time > tempTime) {
-						// 			tempTime = $scope.lists[i].time;
-						// 			$log.log($scope.lists[i].time);
-						// 		}
-						// 	}
-						// 	return tempTime;
-						// };
-						// $scope.lastTime = $scope.latestTime();
-						// $log.log("Last time : " + $scope.lastTime);
+						$scope.latestTime = function() {
+							var tempTime = $scope.lists[0].time;
+							for (var i=0; i<$scope.lists.length-1; ++i) {
+								if($scope.lists[i+1].time > tempTime) {
+									tempTime = $scope.lists[i+1].time;
+									$log.log($scope.lists[i+1].time);
+								}
+							}
+							return tempTime;
+						};
+						$scope.lastTime = $scope.latestTime();
+						$log.log("Last time : " + $scope.lastTime);
 						
 					};
 					// END OF FUNCTION EXECUTES ON CLICK OF THE SAVE BUTTON
