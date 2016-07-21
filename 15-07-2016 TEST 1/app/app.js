@@ -1,95 +1,161 @@
 // MAIN MODULE OF THE APP
 var app = angular.module("app", [])
-				.controller('mainController', ['$scope', function($scope){		// MAIN CONTROLLER
+				.controller('mainController', ['$scope', '$log', function($scope, $log){		// MAIN CONTROLLER
 
-					$scope.titles = [];
-					$scope.descriptions = [];
-					$scope.times = [];
+					// ARRAY FOR HOLDING ALL THE LISTS
+					$scope.lists = [];
 
-					$scope.lastTime;
+					// OBJECT FOR FIELDS WHICH WILL BE PUSHED TO "lists" OBJECT
+					$scope.list = {
+						id: "",
+						title: "",
+						description: "",
+						time: ""
+					};
 					
-					$scope.total = 0;
 
-					
+					$scope.editId = "";
 
+
+
+
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 					// FUNCTION EXECUTES ON CLICK OF THE SAVE BUTTON
-					$(".saveButton").click( function () {
+					$scope.saveFunction = function() {
 						// alert("clicked");
 
+						$scope.list.time = new Date();
+
+						$scope.lists.push({
+							id: "",
+							title: $scope.list.title,
+							description: $scope.list.description,
+							time: $scope.list.time
+						});
+						// console.log($scope.lists);
+
+						// SET SERIAL NUMBER
+						$scope.setSerial = function() {
+							// alert("in");
+							for(var i = 0; i < $scope.lists.length; ++i) {
+								// alert("ïn");
+								$scope.lists[i].id = i+1;
+							}
+						};
+						$scope.setSerial();
 
 
-						// CALCULATING CURRENT TIME AND APPENDING TO FULLTIME VARIABLE
-						var d = new Date();
-						var date = d.toDateString();
-						var hour = d.getHours();
-						var minute = d.getMinutes();
-						var second = d.getSeconds();
-						var fullTime = date + " " + hour + ":" + minute + ":" + second;
-						// alert("fulltime: " + fullTime);
-						// END OF CALCULATING CURRENT TIME AND APPENDING TO FULLTIME VARIABLE
-						$scope.lastTime = fullTime;
+						localStorage.setItem('localLists', JSON.stringify($scope.lists));
+						$scope.lists = JSON.parse(localStorage['localLists']);
+
+						// CALCULATE TOTAL LIST ITEMS	
+						$scope.total = $scope.lists.length;
 
 
-						// PUSHING MODAL VALUES INTO ARRAYS
-						$scope.titles.push($scope.plusTitle);
-						$scope.descriptions.push($scope.plusDescription);
-						$scope.times.push(fullTime);
-						// END OF PUSHING MODAL VALUES INTO ARRAYS
-
+						$scope.latestTime = function() {
+							var tempTime = $scope.lists[0].time;
+							for (var i=0; i<$scope.lists.length-1; ++i) {
+								if($scope.lists[i+1].time > tempTime) {
+									tempTime = $scope.lists[i+1].time;
+									$log.log($scope.lists[i+1].time);
+								}
+							}
+							return tempTime;
+						};
+						$scope.lastTime = $scope.latestTime();
+						$log.log("Last time : " + $scope.lastTime);
 						
-						// Title						
-						localStorage["myTitles"] = JSON.stringify($scope.titles);
-						$scope.titles = JSON.parse(localStorage["myTitles"]);
-						// END OF Title
-
-						// Description
-						localStorage["myDescriptions"] = JSON.stringify($scope.descriptions);
-						$scope.descriptions = JSON.parse(localStorage["myDescriptions"]);
-						// END OF Description
-
-
-						// Time
-						localStorage["myTimes"] = JSON.stringify($scope.times);
-						$scope.times = JSON.parse(localStorage["myTimes"]);
-						// END OF Time
-
-						
-
-
-
-						console.log("Titles = " + $scope.titles);
-
-						// console.log(titles);
-						// console.log(descriptions);
-					});
+					};
 					// END OF FUNCTION EXECUTES ON CLICK OF THE SAVE BUTTON
-
-
-					// (function() {
-					// 	$scope.titles = JSON.parse(localStorage["myTitles"]);
-					// 	$scope.descriptions = JSON.parse(localStorage["myTitles"]);
-					// })();
+// ---------------------------------------------------------------------------------------------------------------
 
 
 
-					// THIS IS AN "IFFIE" TO LOAD DATA FROM LOCAL STORAGE ON PAGE LOAD BUT ONLY IF THE LOCAL STORAGE KEY IS CREATED
-					(function() {
 
-						if((localStorage.getItem("myTitles") !== null) && (localStorage.getItem("myDescriptions") !== null) && localStorage.getItem("myTimes") !== null ){
-						   // alert("yes");
-								$scope.titles = JSON.parse(localStorage["myTitles"]);
-								$scope.descriptions = JSON.parse(localStorage["myTitles"]);
 
-								// time
-								$scope.times = JSON.parse(localStorage["myTimes"]);
-								// time
+
+
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+					// SETS ID ON BASIS OF SELECTED EDIT ELEMENT
+					$scope.setId = function(editId) {
+						// alert("Edit called");
+						$scope.editId = editId;
+						// console.log("editId: " + $scope.editId);
+					};
+					// END OF SETS ID ON BASIS OF SELECTED EDIT ELEMENT
+// ---------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+					// EDIT DATA FUNCTION
+					$scope.editFunction = function(editId) {
+						// alert("Edit called");
+						$scope.lists[$scope.editId-1].title = $scope.list.title;
+						$scope.lists[$scope.editId-1].description = $scope.list.description;
+					};
+					// END OF EDIT DATA FUNCTION
+// ---------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+					// FUNCTION TO SET SERIAL NUMBER
+					$scope.setSerial = function() {
+						// alert("in");
+						for(var i = 0; i < $scope.lists.length; ++i) {
+							// alert("ïn");
+							$scope.lists[i].id = i+1;
 						}
-					})();
+					};
+					$scope.setSerial();
+					// END OF FUNCTION TO SET SERIAL NUMBER
+// ---------------------------------------------------------------------------------------------------------------
 
 
-					
-				
 
+
+
+
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+					// FUNCTION EXECUTES ON CLICK OF CROSS BUTTON TO REMOVE FIELD
+					$scope.close = function(id) {
+						console.log(id);
+						$scope.lists.splice(id-1, 1);
+						$scope.setSerial();
+						// CALCULATE TOTAL LIST ITEMS	
+						$scope.total = $scope.lists.length;
+
+						localStorage.setItem('localLists', JSON.stringify($scope.lists));
+						$scope.lists = JSON.parse(localStorage['localLists']);
+					};
+					// END OF FUNCTION EXECUTES ON CLICK OF CROSS BUTTON TO REMOVE FIELD
+// ---------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+					// CHECK IF LOCAL STORAGE CONTAINS ANY DATA AND IF YES THEN LOAD THE DATA INTO "lists" ARRAY
+					if(localStorage.getItem("localLists") !== null) {
+						$scope.lists = JSON.parse(localStorage['localLists']);
+						$scope.total = $scope.lists.length;
+					} else {
+						$scope.lists = [];
+						// alert("no data");
+					}
+					// END OF CHECK IF LOCAL STORAGE CONTAINS ANY DATA AND IF YES THEN LOAD THE DATA INTO "lists" ARRAY
+// ---------------------------------------------------------------------------------------------------------------
 
 				}]);		// END OF MAIN CONTROLLER
 
