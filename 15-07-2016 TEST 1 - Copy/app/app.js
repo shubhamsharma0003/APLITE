@@ -1,6 +1,6 @@
 // MAIN MODULE OF THE APP
 var app = angular.module("app", [])
-				.controller('mainController', ['$scope', '$log', function($scope, $log){		// MAIN CONTROLLER
+				.controller('mainController', ['$scope', '$log', '$filter', function($scope, $log, $filter) {		// MAIN CONTROLLER
 
 					// ARRAY FOR HOLDING ALL THE LISTS
 					$scope.lists = [];
@@ -16,8 +16,11 @@ var app = angular.module("app", [])
 
 					$scope.editId = "";
 
-
-
+					// FLAGS TO TOGGLE AND ORDER BY TABLE FIELDS
+					$scope.serialNumberFlag = true;
+					$scope.titleFlag = true;
+					$scope.descriptionFlag = true;
+					// END OF FLAGS TO TOGGLE AND ORDER BY TABLE FIELDS
 
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 					// FUNCTION EXECUTES ON CLICK OF THE SAVE BUTTON
@@ -52,23 +55,46 @@ var app = angular.module("app", [])
 						$scope.total = $scope.lists.length;
 
 
-						$scope.latestTime = function() {
-							var tempTime = $scope.lists[0].time;
-							for (var i=0; i<$scope.lists.length-1; ++i) {
-								if($scope.lists[i+1].time > tempTime) {
-									tempTime = $scope.lists[i+1].time;
-									$log.log($scope.lists[i+1].time);
-								}
-							}
-							return tempTime;
-						};
 						$scope.lastTime = $scope.latestTime();
-						$log.log("Last time : " + $scope.lastTime);
+						// $log.log("Last time : " + $scope.lastTime);
 						
 					};
 					// END OF FUNCTION EXECUTES ON CLICK OF THE SAVE BUTTON
 // ---------------------------------------------------------------------------------------------------------------
 
+
+
+
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+					// FUNCTION FOR CLEARING OUT INPUT FIELD ON CLICK (clearField()) CALLED UPON "ng-click" ON INPUT FIELD
+					$scope.clearFieldTitle = function () {
+						$scope.list.title = "";
+					};
+
+					$scope.clearFieldDescription = function () {
+						$scope.list.description = "";
+					};
+					// END OF FUNCTION FOR CLEARING OUT INPUT FIELD ON CLICK (clearField()) CALLED UPON "ng-click" ON INPUT FIELD
+// ---------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+					// FUNCTION FOR GETTING LATEST TIME i.e. TIME OF LAST ADDITION
+					$scope.latestTime = function() {
+						var tempTime = $scope.lists[0].time;
+						for (var i=0; i<$scope.lists.length-1; ++i) {
+							if($scope.lists[i+1].time > tempTime) {
+								tempTime = $scope.lists[i+1].time;
+								// $log.log($scope.lists[i+1].time);
+							}
+						}
+						return tempTime;
+					};
+					// END OF FUNCTION FOR GETTING LATEST TIME i.e. TIME OF LAST ADDITION
+// ---------------------------------------------------------------------------------------------------------------
 
 
 
@@ -145,17 +171,98 @@ var app = angular.module("app", [])
 
 
 
+
+
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+					// FUNC TO ORDER BY SERIAL NUMBER (S. NO.)
+					$scope.serialNumberToggle = function () {
+						// alert("toggle");
+						
+						if ($scope.serialNumberFlag === true) {
+							$scope.lists = $filter('orderBy')($scope.lists, 'description');
+							localStorage.setItem('localLists', JSON.stringify($scope.lists));
+							$scope.lists = JSON.parse(localStorage['localLists']);
+							$scope.serialNumberFlag = false;
+						} else {
+							$scope.lists = $filter('orderBy')($scope.lists, 'description', 'reverse');
+							localStorage.setItem('localLists', JSON.stringify($scope.lists));
+							$scope.lists = JSON.parse(localStorage['localLists']);
+							$scope.serialNumberFlag = true;
+						}
+						
+						// $log.log($scope.lists);
+					};
+// ---------------------------------------------------------------------------------------------------------------
+
+
+
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+					// FUNC TO ORDER BY TITLES
+					$scope.titleToggle = function () {
+						// alert("toggle");
+						
+						if ($scope.titleFlag === true) {
+							$scope.lists = $filter('orderBy')($scope.lists, 'title');
+							localStorage.setItem('localLists', JSON.stringify($scope.lists));
+							$scope.lists = JSON.parse(localStorage['localLists']);
+							$scope.titleFlag = false;
+						} else {
+							$scope.lists = $filter('orderBy')($scope.lists, 'title', 'reverse');
+							localStorage.setItem('localLists', JSON.stringify($scope.lists));
+							$scope.lists = JSON.parse(localStorage['localLists']);
+							$scope.titleFlag = true;
+						}
+						
+						// $log.log($scope.lists);
+					};
+// ---------------------------------------------------------------------------------------------------------------
+
+
+
+
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+					// FUNC TO ORDER BY DESCRIPTION
+					$scope.descriptionToggle = function () {
+						// alert("toggle");
+						
+						if ($scope.descriptionFlag === true) {
+							$scope.lists = $filter('orderBy')($scope.lists, 'description');
+							localStorage.setItem('localLists', JSON.stringify($scope.lists));
+							$scope.lists = JSON.parse(localStorage['localLists']);
+							$scope.descriptionFlag = false;
+						} else {
+							$scope.lists = $filter('orderBy')($scope.lists, 'description', 'reverse');
+							localStorage.setItem('localLists', JSON.stringify($scope.lists));
+							$scope.lists = JSON.parse(localStorage['localLists']);
+							$scope.descriptionFlag = true;
+						}
+						
+						// $log.log($scope.lists);
+					};
+// ---------------------------------------------------------------------------------------------------------------
+
+
+
+
+
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 					// CHECK IF LOCAL STORAGE CONTAINS ANY DATA AND IF YES THEN LOAD THE DATA INTO "lists" ARRAY
 					if(localStorage.getItem("localLists") !== null) {
 						$scope.lists = JSON.parse(localStorage['localLists']);
 						$scope.total = $scope.lists.length;
+						$scope.lastTime = $scope.latestTime();
+
+
 					} else {
 						$scope.lists = [];
 						// alert("no data");
 					}
 					// END OF CHECK IF LOCAL STORAGE CONTAINS ANY DATA AND IF YES THEN LOAD THE DATA INTO "lists" ARRAY
 // ---------------------------------------------------------------------------------------------------------------
+
+
+
+
 
 				}]);		// END OF MAIN CONTROLLER
 
