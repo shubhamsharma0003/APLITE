@@ -20,6 +20,7 @@ var app = angular.module("app", [])
 					$scope.serialNumberFlag = true;
 					$scope.titleFlag = true;
 					$scope.descriptionFlag = true;
+					$scope.timeFlag = true;
 					// END OF FLAGS TO TOGGLE AND ORDER BY TABLE FIELDS
 
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -179,12 +180,12 @@ var app = angular.module("app", [])
 						// alert("toggle");
 						
 						if ($scope.serialNumberFlag === true) {
-							$scope.lists = $filter('orderBy')($scope.lists, 'description');
+							$scope.lists = $filter('orderBy')($scope.lists, 'id');
 							localStorage.setItem('localLists', JSON.stringify($scope.lists));
 							$scope.lists = JSON.parse(localStorage['localLists']);
 							$scope.serialNumberFlag = false;
 						} else {
-							$scope.lists = $filter('orderBy')($scope.lists, 'description', 'reverse');
+							$scope.lists = $filter('orderBy')($scope.lists, 'id', 'reverse');
 							localStorage.setItem('localLists', JSON.stringify($scope.lists));
 							$scope.lists = JSON.parse(localStorage['localLists']);
 							$scope.serialNumberFlag = true;
@@ -240,6 +241,32 @@ var app = angular.module("app", [])
 						// $log.log($scope.lists);
 					};
 // ---------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+					// FUNC TO ORDER BY TIME
+					$scope.timeToggle = function () {
+						// alert("toggle");
+						
+						if ($scope.timeFlag === true) {
+							$scope.lists = $filter('orderBy')($scope.lists, 'time');
+							localStorage.setItem('localLists', JSON.stringify($scope.lists));
+							$scope.lists = JSON.parse(localStorage['localLists']);
+							$scope.timeFlag = false;
+						} else {
+							$scope.lists = $filter('orderBy')($scope.lists, 'time', 'reverse');
+							localStorage.setItem('localLists', JSON.stringify($scope.lists));
+							$scope.lists = JSON.parse(localStorage['localLists']);
+							$scope.timeFlag = true;
+						}
+						
+						// $log.log($scope.lists);
+					};
+// ---------------------------------------------------------------------------------------------------------------
+
 
 
 
