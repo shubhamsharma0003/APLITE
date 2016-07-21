@@ -57,10 +57,10 @@
 			        <div class="modal-body">
 			          <form action="" name="form">
 			          	<label for="addTitle">Title: </label>
-			          	<input type="text" id="addTitle" ng-model="list.title" ng-click="clearFieldTitle()" name="plusTitle" required>
+			          	<input type="text" id="addTitle" ng-model="list.title" ng-focus="clearFieldTitle()" name="plusTitle" required>
 			          				
 			          	<label for="addDescription">Desciption: </label>
-			          	<input type="text" id="addDescription" ng-model="list.description" ng-click="clearFieldDescription()" name="plusDescription" required>
+			          	<input type="text" id="addDescription" ng-model="list.description" ng-focus="clearFieldDescription()" name="plusDescription" required>
 			          	
 			          	<button type="button" class="saveButton btn btn-info" id="saveButton" ng-disabled="form.plusTitle.$error.required || form.plusDescription.$error.required" ng-click="saveFunction()">Save</button>
 			          </form>
