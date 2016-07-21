@@ -175,7 +175,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr ng-repeat="listItem in lists track by $index">
+					<tr ng-repeat="listItem in lists | filter : { title: titleSearch } | filter : { description : descriptionSearch } track by $index ">
 						<td>{{listItem.id}}</td>
 						<td>{{listItem.title}}</td>
 						<td>{{listItem.description}}</td>
