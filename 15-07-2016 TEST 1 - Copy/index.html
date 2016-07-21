@@ -154,7 +154,7 @@
 						<td>{{listItem.title}}</td>
 						<td>{{listItem.description}}</td>
 						<td>{{listItem.time | date:'MMM d, y h:mm:ss a'}}</td>
-						<td><strong><a class="edit" data-toggle="modal" data-target="#edit" ng-click="setId(listItem.id)">Edit</a></strong>&nbsp;&nbsp;&nbsp;<strong>|</strong>&nbsp;&nbsp;&nbsp;<button type="button" class="remove" ng-click="close(listItem.id); setSerial()"><a>Remove</a></button></td>
+						<td><strong><a class="edit" data-toggle="modal" data-target="#edit" ng-click="setId(listItem.id); setField()">Edit</a></strong>&nbsp;&nbsp;&nbsp;<strong>|</strong>&nbsp;&nbsp;&nbsp;<button type="button" class="remove" ng-click="close(listItem.id); setSerial()"><a>Remove</a></button></td>
 					</tr>
 				</tbody>
 			</table>

@@ -135,6 +135,21 @@ var app = angular.module("app", [])
 
 
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+					// GET DATA INPUT FIELD ON EDIT
+					$scope.setField = function(editId) {
+						// alert("setField() called");
+						$scope.list.title = $scope.lists[$scope.editId-1].title;
+						$scope.list.description = $scope.lists[$scope.editId-1].description;
+					};
+					// END OF GET DATA INPUT FIELD ON EDIT
+// ---------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 					// FUNCTION TO SET SERIAL NUMBER
 					$scope.setSerial = function() {
 						// alert("in");
