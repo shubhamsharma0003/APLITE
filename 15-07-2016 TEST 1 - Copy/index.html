@@ -55,13 +55,17 @@
 			        </div>
 
 			        <div class="modal-body">
-			          <form action="" name="form">
-			          	<label for="addTitle">Title: </label>
-			          	<input type="text" id="addTitle" ng-model="list.title" ng-focus="clearFieldTitle()" name="plusTitle" required>
-			          				
-			          	<label for="addDescription">Desciption: </label>
-			          	<input type="text" id="addDescription" ng-model="list.description" ng-focus="clearFieldDescription()" name="plusDescription" required>
+			          <form role="form" name="form">
 			          	
+			          	<div class="form-group">
+			          		<label for="addTitle">Title: </label>
+			          		<input type="text" id="addTitle" class="form-control" ng-model="list.title" ng-focus="clearFieldTitle()" name="plusTitle" required>
+			          	</div>
+			          	
+			          	<div class="form-group">
+			          		<label for="addDescription">Desciption: </label>
+			          		<input type="text" id="addDescription" class="form-control" ng-model="list.description" ng-focus="clearFieldDescription()" name="plusDescription" required>
+			          	</div>			
 			          	<button type="button" class="saveButton btn btn-info" id="saveButton" ng-disabled="form.plusTitle.$error.required || form.plusDescription.$error.required" ng-click="saveFunction()">Save</button>
 			          </form>
 			        </div>
@@ -115,12 +119,17 @@
 				          <h4 class="modal-title">Edit field</h4>
 				        </div>
 				        <div class="modal-body">
-							<form action="" name="editForm">
-					          	<label for="editTitle">Title: </label>
-					          	<input type="text" id="editTitle" ng-model="list.title" name="editTitle" required>
-					          				
-					          	<label for="editDescription">Desciption: </label>
-					          	<input type="text" id="editDescription" ng-model="list.description" name="editDescription" required>
+							<form role="form" name="editForm">
+								<div class="form-group">
+									<label for="editTitle">Title: </label>
+					          		<input type="text" id="editTitle" class="form-control" ng-model="list.title" name="editTitle" required>
+								</div>
+					          	
+					          	<div class="form-group">
+					          		<label for="editDescription">Desciption: </label>
+					          		<input type="text" id="editDescription" class="form-control" ng-model="list.description" name="editDescription" required>
+					          	</div>			
+					          	
 					          	
 					          	<button type="button" class="editSaveButton btn btn-info" id="editSaveButton" ng-disabled="editForm.editTitle.$error.required || editForm.editDescription.$error.required" ng-click="editFunction()">Save</button>
 			          		</form>
