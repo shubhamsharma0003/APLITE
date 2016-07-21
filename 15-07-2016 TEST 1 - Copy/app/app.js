@@ -16,6 +16,9 @@ var app = angular.module("app", [])
 
 					$scope.editId = "";
 
+					$scope.titleSearch = "";
+					$scope.descriptionSearch = "";
+
 					// FLAGS TO TOGGLE AND ORDER BY TABLE FIELDS
 					$scope.serialNumberFlag = true;
 					$scope.titleFlag = true;
