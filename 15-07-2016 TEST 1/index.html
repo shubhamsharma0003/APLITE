@@ -55,13 +55,17 @@
 			        </div>
 
 			        <div class="modal-body">
-			          <form action="" name="form">
-			          	<label for="addTitle">Title: </label>
-			          	<input type="text" id="addTitle" ng-model="list.title" name="plusTitle" required>
-			          				
-			          	<label for="addDescription">Desciption: </label>
-			          	<input type="text" id="addDescription" ng-model="list.description" name="plusDescription" required>
+			          <form role="form" name="form">
 			          	
+			          	<div class="form-group">
+			          		<label for="addTitle">Title: </label>
+			          		<input type="text" id="addTitle" class="form-control" placeholder="Enter title" ng-model="list.title" ng-focus="clearFieldTitle()" name="plusTitle" required>
+			          	</div>
+			          	
+			          	<div class="form-group">
+			          		<label for="addDescription">Desciption: </label>
+			          		<input type="text" id="addDescription" class="form-control" placeholder="Enter description" ng-model="list.description" ng-focus="clearFieldDescription()" name="plusDescription" required>
+			          	</div>			
 			          	<button type="button" class="saveButton btn btn-info" id="saveButton" ng-disabled="form.plusTitle.$error.required || form.plusDescription.$error.required" ng-click="saveFunction()">Save</button>
 			          </form>
 			        </div>
@@ -91,7 +95,7 @@
 			        </div>
 			        <div class="modal-body">
 			          <p>Total todos: <span ng-bind="total"></span> </p>
-			          <p>Last updation time: <span>{{lastTime | date:'MMM d, y h:mm:ss a'}}</span> </p>
+			          <p>Last updation time: <span>{{lastTime | date:'MMM d, y [ h:mm:ss a ]'}}</span> </p>
 			        </div>
 			        <div class="modal-footer">
 			          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -115,12 +119,17 @@
 				          <h4 class="modal-title">Edit field</h4>
 				        </div>
 				        <div class="modal-body">
-							<form action="" name="editForm">
-					          	<label for="editTitle">Title: </label>
-					          	<input type="text" id="editTitle" ng-model="list.title" name="editTitle" required>
-					          				
-					          	<label for="editDescription">Desciption: </label>
-					          	<input type="text" id="editDescription" ng-model="list.description" name="editDescription" required>
+							<form role="form" name="editForm">
+								<div class="form-group">
+									<label for="editTitle">Title: </label>
+					          		<input type="text" id="editTitle" class="form-control" ng-model="list.title" name="editTitle" required>
+								</div>
+					          	
+					          	<div class="form-group">
+					          		<label for="editDescription">Desciption: </label>
+					          		<input type="text" id="editDescription" class="form-control" ng-model="list.description" name="editDescription" required>
+					          	</div>			
+					          	
 					          	
 					          	<button type="button" class="editSaveButton btn btn-info" id="editSaveButton" ng-disabled="editForm.editTitle.$error.required || editForm.editDescription.$error.required" ng-click="editFunction()">Save</button>
 			          		</form>
@@ -141,20 +150,37 @@
 			<table class="table table-bordered">
 				<thead>
 					<tr>
-						<th><strong>S. No.</strong></th>
-						<th><strong>Title</strong></th>
-						<th><strong>Description</strong></th>
-						<th><strong>Time added</strong></th>
+						<th></th>
+						<th>
+							<div class="form-group">
+								<label for="titleSearchBox">Search by title: </label>
+								<input type="text" id="titleSearchBox" class="form-control" placeholder="Type to search..." ng-model="titleSearch">
+							</div>
+						</th>
+						<th>
+							<div class="form-group">
+								<label for="descriptionSearchBox">Search by description: </label>
+								<input type="text" id="descriptionSearchBox" class="form-control" placeholder="Type to search..." ng-model="descriptionSearch">
+							</div>
+						</th>
+						<th></th>
+						<th></th>
+					</tr>
+					<tr>
+						<th ng-click="serialNumberToggle()"><strong>S. No.</strong></th>
+						<th ng-click="titleToggle()"><strong>Title</strong></th>
+						<th ng-click="descriptionToggle()"><strong>Description</strong></th>
+						<th ng-click="timeToggle()"><strong>Time added</strong></th>
 						<th><strong>Edit | Remove</strong></th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr ng-repeat="listItem in lists track by $index">
+					<tr ng-repeat="listItem in lists | filter : { title: titleSearch } | filter : { description : descriptionSearch } track by $index ">
 						<td>{{listItem.id}}</td>
 						<td>{{listItem.title}}</td>
 						<td>{{listItem.description}}</td>
-						<td>{{listItem.time | date:'MMM d, y h:mm:ss a'}}</td>
-						<td><strong><a class="edit" data-toggle="modal" data-target="#edit" ng-click="setId(listItem.id)">Edit</a></strong>&nbsp;&nbsp;&nbsp;<strong>|</strong>&nbsp;&nbsp;&nbsp;<button type="button" class="remove" ng-click="close(listItem.id); setSerial()"><a>Remove</a></button></td>
+						<td>{{listItem.time | date:'MMM d, y [ h:mm:ss a ]'}}</td>
+						<td><strong><a class="edit" data-toggle="modal" data-target="#edit" ng-click="setId(listItem.id); setField()">Edit</a></strong>&nbsp;&nbsp;&nbsp;<strong>|</strong>&nbsp;&nbsp;&nbsp;<button type="button" class="remove" ng-click="close(listItem.id); setSerial()"><a>Remove</a></button></td>
 					</tr>
 				</tbody>
 			</table>

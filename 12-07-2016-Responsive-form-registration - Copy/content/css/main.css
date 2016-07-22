@@ -1,0 +1,33 @@
+html, body, .mainPage {
+	height: 100%;
+	width: 100%;
+}
+
+md-content {
+	background: #FFF;
+
+}
+
+h2 {
+	/* border: 1px solid black; */
+	text-align: center;
+	font-weight: bold;
+}
+
+.formContainer {
+
+	width: 90%;
+	height: 100%;
+	margin: auto;
+	padding: 4%;
+	/* background: #dfdfdf; */
+}
+
+.date {
+	background: #fff;
+	border: none;
+}
+
+.md-datepicker-input-container {
+	border: transparent none;
+}
