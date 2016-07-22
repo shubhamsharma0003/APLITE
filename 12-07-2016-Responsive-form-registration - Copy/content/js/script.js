@@ -4,19 +4,6 @@ function ClearForm(){
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 // FUNCTION FOR LOADING IMAGE INTO HTML AFTER IT GETS UPLOADED
